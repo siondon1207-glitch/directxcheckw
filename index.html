@@ -1,23 +1,1208 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LegalService",
+          "@id": "https://yourdomain.com/#organization",
+          "name": "안양개인회생 법률상담센터",
+          "url": "https://yourdomain.com",
+          "logo": "https://yourdomain.com/logo.png",
+          "description": "수원회생법원 관할 안양시 만안구 및 동안구 채무자를 위한 개인회생 및 파산 전담 법률 지원 서비스",
+          "telephone": "+82-31-000-0000",
+          "areaServed": [
+            {
+              "@type": "AdministrativeArea",
+              "name": "안양시"
+            },
+            {
+              "@type": "AdministrativeArea",
+              "name": "수원회생법원 관할구역"
+            }
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "경기도 안양시 동안구 시민대로 일원",
+            "addressLocality": "안양시",
+            "addressRegion": "경기도",
+            "postalCode": "14055",
+            "addressCountry": "KR"
+          },
+          "priceRange": "상담 조건별 상이"
+        },
+        {
+          "@type": "Article",
+          "@id": "https://yourdomain.com/#article",
+          "isPartOf": {
+            "@id": "https://yourdomain.com"
+          },
+          "headline": "안양개인회생 전문 가이드 및 수원회생법원 관할 기각 없는 신청 절차와 비용 계산기",
+          "description": "2026-2027 최신 수원회생법원 실무준칙을 반영한 안양시민 맞춤 개인회생 자격, 생계비 기준, 절차 및 비용 분석",
+          "inLanguage": "ko-KR",
+          "mainEntityOfPage": "https://yourdomain.com/anyang-rehabilitation",
+          "datePublished": "2026-01-10T09:00:00+09:00",
+          "dateModified": "2026-11-03T10:00:00+09:00",
+          "publisher": {
+            "@id": "https://yourdomain.com/#organization"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://yourdomain.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "안양 거주자의 개인회생 신청 관할 법원은 어디인가요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "안양시 만안구와 동안구에 거주하거나 주된 사업장 및 직장이 위치한 채무자는 관할법원인 수원회생법원에 전담 신청서를 접수해야 합니다. 과거 수원지방법원에서 회생법원으로 분리 독립되어 신속한 심리와 합리적인 실무준칙이 적용됩니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "주식이나 가상화폐 투자로 발생한 채무도 안양개인회생을 통해 탕감받을 수 있나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "네, 가능합니다. 수원회생법원은 실무준칙 제408호에 따라 주식이나 가상화폐 등 투자 실패로 발생한 손실금을 청산가치에 전액 반영하지 않는 진보된 원칙을 채택하고 있어, 다른 지방 법원 대비 월 변제금을 낮추고 높은 원금 탕감율을 인정받을 수 있습니다."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "개인회생 신청 시 소요되는 총비용과 수임료 분납 방식은 어떻게 되나요?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "총비용은 법원에 납부하는 필수 공과금(인지대, 송달료, 회생위원 보수)과 변호사 또는 법무사 수임료로 구성됩니다. 채권자 수에 따라 차이가 발생하며, 대부분의 전문 사무소에서는 채무자의 부담을 줄이기 위해 계약금 예치 후 잔액을 수개월에 걸쳐 무이자 분납하는 시스템을 운영합니다."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap');
+
+      :root {
+        --primary-navy: #0f172a;
+        --secondary-navy: #1e293b;
+        --accent-blue: #2563eb;
+        --accent-teal: #0284c7;
+        --soft-mint: #059669;
+        --soft-coral: #dc2626;
+        --bg-surface: #ffffff;
+        --bg-main: #f8fafc;
+        --bg-subtle: #f1f5f9;
+        --border-color: #e2e8f0;
+        --border-focus: #3b82f6;
+        --text-primary: #1e293b;
+        --text-secondary: #475569;
+        --text-muted: #64748b;
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+        --radius-sm: 6px;
+        --radius-md: 10px;
+        --radius-lg: 16px;
+        --radius-xl: 24px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+        background-color: var(--bg-main);
+        color: var(--text-primary);
+        line-height: 1.85;
+        font-size: 16px;
+        word-break: keep-all;
+        letter-spacing: -0.015em;
+      }
+
+      a {
+        color: var(--accent-blue);
+        text-decoration: none;
+        transition: color 0.2s ease, text-decoration 0.2s ease;
+      }
+
+      a:hover {
+        color: #1d4ed8;
+        text-decoration: underline;
+      }
+
+      .site-header {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #1e3a8a 100%);
+        color: #ffffff;
+        padding: 4.5rem 1.5rem 3.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .site-header::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 60%);
+        pointer-events: none;
+      }
+
+      .header-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(8px);
+        color: #93c5fd;
+        padding: 0.4rem 1.2rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .site-header h1 {
+        font-size: 2.75rem;
+        font-weight: 800;
+        line-height: 1.35;
+        margin-bottom: 1.2rem;
+        color: #ffffff;
+        letter-spacing: -0.03em;
+      }
+
+      .site-header p {
+        font-size: 1.2rem;
+        max-width: 820px;
+        margin: 0 auto 2rem;
+        color: #cbd5e1;
+        font-weight: 300;
+      }
+
+      .site-nav {
+        background-color: #ffffff;
+        border-bottom: 1px solid var(--border-color);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .site-nav ul {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        list-style: none;
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+      }
+
+      .site-nav ul::-webkit-scrollbar {
+        display: none;
+      }
+
+      .site-nav li {
+        flex: 0 0 auto;
+      }
+
+      .site-nav a {
+        display: block;
+        padding: 1.1rem 1.2rem;
+        color: var(--text-secondary);
+        font-weight: 600;
+        font-size: 0.95rem;
+        border-bottom: 3px solid transparent;
+        transition: all 0.25s ease;
+      }
+
+      .site-nav a:hover,
+      .site-nav a:focus {
+        color: var(--accent-blue);
+        border-bottom-color: var(--accent-blue);
+        text-decoration: none;
+        background-color: var(--bg-subtle);
+      }
+
+      .layout-container {
+        max-width: 1140px;
+        margin: 3rem auto;
+        padding: 0 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .main-content {
+        background-color: var(--bg-surface);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-xl);
+        padding: 3.5rem 3rem;
+        border: 1px solid var(--border-color);
+      }
+
+      section {
+        margin-bottom: 4rem;
+      }
+
+      section:last-child {
+        margin-bottom: 0;
+      }
+
+      h2 {
+        font-size: 1.95rem;
+        font-weight: 800;
+        color: var(--primary-navy);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 2px solid var(--border-color);
+        position: relative;
+        letter-spacing: -0.025em;
+      }
+
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 70px;
+        height: 2px;
+        background-color: var(--accent-blue);
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--secondary-navy);
+        margin: 2.2rem 0 1rem;
+        display: flex;
+        align-items: center;
+      }
+
+      h4 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--accent-teal);
+        margin: 1.5rem 0 0.6rem;
+      }
+
+      p {
+        margin-bottom: 1.4rem;
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+        text-align: justify;
+      }
+
+      strong {
+        font-weight: 700;
+        color: var(--primary-navy);
+      }
+
+      .highlight-text {
+        color: var(--accent-blue);
+        font-weight: 700;
+      }
+
+      .alert-box {
+        background-color: #eff6ff;
+        border-left: 4px solid var(--accent-blue);
+        padding: 1.5rem;
+        border-radius: var(--radius-sm);
+        margin: 2rem 0;
+      }
+
+      .alert-box p {
+        margin-bottom: 0;
+        color: #1e40af;
+        font-weight: 500;
+      }
+
+      .keyword-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 1.8rem 0;
+        padding: 1.4rem;
+        background-color: var(--bg-subtle);
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-color);
+      }
+
+      .keyword-badge {
+        background-color: #ffffff;
+        color: var(--accent-teal);
+        padding: 0.45rem 0.9rem;
+        border-radius: 20px;
+        font-size: 0.88rem;
+        font-weight: 600;
+        border: 1px solid #cbd5e1;
+        transition: all 0.2s ease;
+      }
+
+      .keyword-badge:hover {
+        background-color: var(--accent-blue);
+        color: #ffffff;
+        border-color: var(--accent-blue);
+        text-decoration: none;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+        margin: 2.2rem 0;
+      }
+
+      .info-card {
+        background: var(--bg-main);
+        padding: 1.8rem;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border-color);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+      }
+
+      .info-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+        border-color: #cbd5e1;
+      }
+
+      .info-card h4 {
+        margin-top: 0;
+        color: var(--primary-navy);
+        font-size: 1.2rem;
+      }
+
+      .info-card p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        margin-bottom: 0;
+      }
+
+      .custom-table-container {
+        width: 100%;
+        overflow-x: auto;
+        margin: 2rem 0;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 0.95rem;
+        background-color: #ffffff;
+      }
+
+      thead {
+        background-color: #f8fafc;
+        border-bottom: 2px solid #cbd5e1;
+      }
+
+      th {
+        padding: 1.1rem 1.2rem;
+        color: var(--primary-navy);
+        font-weight: 700;
+      }
+
+      td {
+        padding: 1rem 1.2rem;
+        border-bottom: 1px solid var(--border-color);
+        color: var(--text-secondary);
+      }
+
+      tr:hover td {
+        background-color: #f1f5f9;
+      }
+
+      .chart-container {
+        background-color: var(--bg-subtle);
+        padding: 2rem;
+        border-radius: var(--radius-lg);
+        margin: 2.5rem 0;
+        border: 1px solid var(--border-color);
+      }
+
+      .chart-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary-navy);
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      .bar-group {
+        margin-bottom: 1.2rem;
+      }
+
+      .bar-label {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.4rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+      }
+
+      .bar-bg {
+        background-color: #e2e8f0;
+        height: 22px;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .bar-fill {
+        height: 100%;
+        border-radius: 12px;
+        background: linear-gradient(90deg, #3b82f6 0%, #0ea5e9 100%);
+      }
+
+      .bar-fill.accent {
+        background: linear-gradient(90deg, #059669 0%, #10b981 100%);
+      }
+
+      .bar-fill.warm {
+        background: linear-gradient(90deg, #f59e0b 0%, #ef4444 100%);
+      }
+
+      .calc-widget {
+        background: linear-gradient(145deg, #ffffff, #f8fafc);
+        border: 2px solid #dbeafe;
+        border-radius: var(--radius-xl);
+        padding: 2.5rem;
+        margin: 3rem 0;
+        box-shadow: var(--shadow-md);
+      }
+
+      .calc-widget h3 {
+        margin-top: 0;
+        color: var(--accent-blue);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.2rem;
+        margin-top: 1.5rem;
+      }
+
+      .form-field {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-field label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+      }
+
+      .form-field input,
+      .form-field select {
+        padding: 0.85rem 1rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-color);
+        font-size: 1rem;
+        font-family: inherit;
+        background-color: #ffffff;
+        color: var(--text-primary);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .form-field input:focus,
+      .form-field select:focus {
+        border-color: var(--border-focus);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        color: #ffffff;
+        border: none;
+        padding: 1.1rem 2.2rem;
+        font-size: 1.05rem;
+        font-weight: 700;
+        border-radius: 50px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 1.5rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(37, 99, 235, 0.45);
+      }
+
+      .accordion {
+        margin-top: 2rem;
+      }
+
+      .accordion-item {
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .accordion-header {
+        width: 100%;
+        text-align: left;
+        background: none;
+        border: none;
+        padding: 1.4rem 0.5rem;
+        font-size: 1.12rem;
+        font-weight: 700;
+        color: var(--primary-navy);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: color 0.2s ease;
+        font-family: inherit;
+      }
+
+      .accordion-header:hover {
+        color: var(--accent-blue);
+      }
+
+      .accordion-header::after {
+        content: "+";
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: var(--accent-teal);
+        transition: transform 0.2s ease;
+      }
+
+      .accordion-header.active::after {
+        content: "-";
+        transform: rotate(180deg);
+      }
+
+      .accordion-body {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out, padding 0.3s ease;
+        padding: 0 0.5rem;
+        color: var(--text-secondary);
+      }
+
+      .accordion-body.open {
+        max-height: 500px;
+        padding-bottom: 1.5rem;
+      }
+
+      .trust-links-panel {
+        background-color: #f8fafc;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        margin: 3.5rem 0;
+      }
+
+      .trust-links-panel h4 {
+        margin-top: 0;
+        color: var(--primary-navy);
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .link-pill-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .link-pill-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.4rem;
+        background-color: #ffffff;
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        transition: border-color 0.2s ease, transform 0.2s ease;
+      }
+
+      .link-pill-item:hover {
+        border-color: var(--accent-blue);
+        transform: translateX(4px);
+      }
+
+      .site-footer {
+        background-color: var(--primary-navy);
+        color: #94a3b8;
+        padding: 4rem 1.5rem 3rem;
+        font-size: 0.92rem;
+        line-height: 1.7;
+      }
+
+      .footer-inner {
+        max-width: 1140px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 2.5rem;
+      }
+
+      .footer-inner h5 {
+        color: #ffffff;
+        font-size: 1.05rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer-bottom {
+        max-width: 1140px;
+        margin: 3rem auto 0;
+        padding-top: 2rem;
+        border-top: 1px solid #334155;
+        text-align: center;
+        color: #64748b;
+      }
+
+      @media (max-width: 992px) {
+        .layout-container {
+          padding: 0 1rem;
+          margin: 2rem auto;
+        }
+
+        .main-content {
+          padding: 2.5rem 1.8rem;
+        }
+
+        .site-header h1 {
+          font-size: 2.2rem;
+        }
+
+        .footer-inner {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .site-header {
+          padding: 3rem 1rem 2.5rem;
+        }
+
+        .site-header h1 {
+          font-size: 1.85rem;
+        }
+
+        .main-content {
+          padding: 1.8rem 1.2rem;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+        }
+
+        h3 {
+          font-size: 1.25rem;
+        }
+      }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <span class="header-badge">2026-2027 수원회생법원 실무준칙 전담 대응 포털</span>
+        <h1>안양개인회생 전문 가이드 및 관할 법원 절차 총정리</h1>
+        <p>감당하기 힘든 빚의 무게에서 벗어나는 확실한 법률 솔루션. 안양시민을 위한 관할 수원회생법원 원금 최대 90퍼센트 탕감 전략과 최신 최저생계비 기준 모의 계산을 투명하게 공개합니다.</p>
+    </header>
+
+    <nav class="site-nav">
+        <ul>
+            <li><a href="#section-overview">제도 개요 및 관할</a></li>
+            <li><a href="#section-regions">안양 30대 구역별 솔루션</a></li>
+            <li><a href="#section-eligibility">신청 자격 및 소득 기준</a></li>
+            <li><a href="#section-cost-table">수임료 및 공과금 비용표</a></li>
+            <li><a href="#section-comparison">개인회생 vs 파산 vs 워크아웃</a></li>
+            <li><a href="#section-timeline">인가까지 6단계 로드맵</a></li>
+            <li><a href="#section-calculator">자가진단 모의 계산기</a></li>
+            <li><a href="#section-faq">자주 묻는 질문 FAQ</a></li>
+            <li><a href="#section-resources">공식 인증 포털 링크</a></li>
+        </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+    <div class="layout-container">
+        <main class="main-content">
+
+            <section id="section-overview">
+                <h2>1. 안양개인회생 핵심 개요 및 수원회생법원 관할 체계 분석</h2>
+                <p>채무로 인해 일상생활이 마비되고 극심한 독촉과 압류의 공포에 시달리는 분들에게 <strong>개인회생제도</strong>는 국가가 법률로 보장하는 가장 확실하고 합법적인 재기 발판입니다. 특히 안양시민의 경우 법률적 관할권의 변경과 전담 회생법원의 설치로 인해 과거보다 훨씬 신속하고 체계적인 심리를 받을 수 있는 환경이 조성되었습니다.</p>
+                <p>안양시(만안구 및 동안구)에 거주하거나 직장 또는 주된 사업장이 위치한 채무자는 <strong>수원회생법원</strong>이 전담 관할 법원이 됩니다. 2023년 정식 개원한 수원회생법원은 경기 남부권 채무자의 회생 및 파산 사건을 전문적으로 처리하며, 재판부의 높은 이해도와 선진화된 실무준칙을 적용하고 있습니다. 과거 수원지방법원 시절 1년 이상 소요되던 개시결정 기간이 현저히 단축되었으며, 채무자의 생계 보장과 경제적 회생을 최우선으로 고려하는 탄력적인 심리가 이루어집니다.</p>
+
+                <div class="alert-box">
+                    <p>중요 체크포인트: 안양 거주 채무자가 안양지원(수원지방법원 안양지원)에 회생 신청서를 제출하는 실수를 범하는 경우가 있습니다. 안양지원은 개인회생 관할권이 없으므로 반드시 수원회생법원 본원에 신청서를 접수해야 사건 지연이나 이송 결정을 피할 수 있습니다.</p>
+                </div>
+
+                <div class="keyword-cloud" aria-label="안양개인회생 핵심 연관검색어 및 추천 키워드">
+                    <a href="#section-calculator" class="keyword-badge">안양개인회생 신청자격</a>
+                    <a href="#section-cost-table" class="keyword-badge">개인회생 평균 수임료 비용</a>
+                    <a href="#section-eligibility" class="keyword-badge">2026년 최저생계비 기준표</a>
+                    <a href="#section-calculator" class="keyword-badge">예상 변제금 계산기</a>
+                    <a href="#section-overview" class="keyword-badge">수원회생법원 금지명령 기간</a>
+                    <a href="#section-comparison" class="keyword-badge">개인회생 파산 장단점 차이점</a>
+                    <a href="#section-regions" class="keyword-badge">만안구 개인회생 전문 법무사</a>
+                    <a href="#section-regions" class="keyword-badge">동안구 평촌 개인회생 변호사</a>
+                    <a href="#section-cost-table" class="keyword-badge">수임료 12개월 분납 최저가</a>
+                </div>
+
+                <h3>수원회생법원의 핵심 실무준칙 및 진보된 판단 기준</h3>
+                <p>수원회생법원은 전국 법원 중에서도 채무자 친화적인 실무준칙을 적극 도입하여 운용하고 있습니다. 대표적으로 <strong>실무준칙 제408호(주식 및 가상화폐 투자 손실금의 처리)</strong>를 들 수 있습니다. 주식 투자, 코인 거래, 선물옵션 등으로 인해 막대한 손실을 입은 20대와 30대 청년층 및 직장인의 경우, 타 지방 법원에서는 손실금 전액을 청산가치에 반영하여 월 변제금을 과도하게 높이거나 기각을 유도하는 경향이 있었습니다. 그러나 수원회생법원은 채무자가 투자 과정에서 실제로 소비하여 보유하고 있지 않은 손실금을 원칙적으로 청산가치에 산입하지 않도록 규정하고 있습니다.</p>
+                <p>이러한 선진 준칙 덕분에 안양 지역의 수많은 청년층 직장인과 개인 사업자들이 원금의 최대 90퍼센트까지 합법적으로 감면받으며 경제적 파탄 상태에서 벗어나고 있습니다. 또한 생계비 산정에 있어서도 부양가족 인정 범위와 주거비 추가 지출에 대해 유연한 태도를 취하고 있어 안양 지역 거주자에게 매우 유리한 환경이 구축되어 있습니다.</p>
+            </section>
+
+            <section id="section-regions">
+                <h2>2. 안양시 30개 행정구역 및 랜드마크별 채무 특성과 맞춤형 탕감 전략</h2>
+                <p>안양시는 서울과 인접한 지리적 특성과 더불어 노후 구도심과 계획 신도시가 공존하는 복합적인 생활권을 형성하고 있습니다. 거주 지역과 직업군에 따라 발생하는 채무의 성격이 확연히 다르기 때문에 사건을 수임하는 법률대리인은 지역별 특성을 면밀히 파악하고 맞춤형 소명 자료를 준비해야 합니다.</p>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>만안구 구도심 상권 및 주거지</h4>
+                        <p><strong>안양동, 석수동, 박달동</strong> 일대는 자영업 종사자, 소상공인, 프리랜서, 일용직 근로자의 비중이 높습니다. 코로나 이후 누적된 고금리 대출과 경기 침체로 인한 매출 감소가 주요 채무 원인입니다. 소득 증빙이 불규칙한 경우가 많아 소득 입증 컨설팅이 핵심입니다.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>동안구 평촌 신도시 및 오피스 권역</h4>
+                        <p><strong>비산동, 관양동, 평촌동, 호계동</strong> 일대는 IT 벤처 종사자, 연구원, 중소기업 직장인, 대규모 학원가 강사진이 밀집해 있습니다. 고정 소득은 안정적이나 무리한 부동산 영끌 대출, 주식 및 코인 투자 실패, 카드론 채무가 다수를 차지합니다.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>역세권 중심 상업 및 유통 중심지</h4>
+                        <p><strong>범계역, 평촌역, 인덕원역, 안양역</strong> 등 핵심 역세권은 청년층 1인가구와 서비스업 청년 노동자가 밀집되어 있습니다. 2030세대의 생활비 부족으로 인한 다중 채무, 리볼빙, 불법 대부업체 대출의 신속한 금지명령 차단이 최우선 과제입니다.</p>
+                    </div>
+                </div>
+
+                <h3>안양 내 세부 동별 거주자 맞춤형 사건 관리 전략</h3>
+                <p>구체적인 행정동별 특성을 살펴보면, 만안구의 <strong>안양1동, 안양2동, 안양3동, 안양4동, 안양5동, 안양6동, 안양7동, 안양8동, 안양9동</strong> 일대는 과거 안양일번가를 중심으로 형성된 전통적 상권과 노후 주거 밀집 지역이 혼재되어 있습니다. 이곳의 자영업 채무자들은 세금 체납, 부가가치세 및 건강보험료 연체, 거래처 외상 대금 등 복합적인 상거래 채무를 보유한 사례가 많습니다. 개인회생을 진행할 때 국세와 지방세 등 우선변제채권의 비율을 면밀히 계산하여 변제계획안을 수립하지 않으면 인가 후에도 세금 납부 부담으로 인해 회생이 폐지될 위험이 높습니다.</p>
+                <p>또한 <strong>석수1동, 석수2동, 석수3동</strong> 및 <strong>박달1동, 박달2동</strong> 지역은 서울 금천구와 광명시에 인접하여 물류, 운송, 건설업 관련 종사자가 다수 거주합니다. 차량 할부금과 지입차량 관련 채무, 유류비 및 자재비 채무가 얽혀 있는 경우가 많아 담보권 설정 차량의 보존 여부와 별제권 처리 전략을 사전에 정밀하게 설계해야만 사업을 계속 영위하면서 채무를 재조정받을 수 있습니다.</p>
+                <p>반면 동안구의 중심인 <strong>비산1동, 비산2동, 비산3동, 부흥동, 달안동, 관양1동, 관양2동, 부림동</strong> 지역은 대규모 아파트 단지와 스마트밸리, 재개발 구역이 공존합니다. 이곳의 채무자들은 최근 수년간 급격히 변동한 부동산 시세로 인해 아파트 담보대출과 신용대출이 동시에 한계에 도달한 이른바 하우스푸어 계층의 비중이 뚜렷하게 관찰됩니다. 청산가치 산정 시 부동산 시세 감정과 근저당 설정액을 정밀하게 대조하여 자산보다 채무가 많다는 점을 객관적으로 입증하는 것이 인가결정의 성패를 가릅니다.</p>
+                <p>신도시의 대표 격인 <strong>평촌동, 평안동, 귀인동, 범계동, 신촌동, 갈산동</strong>과 <strong>호계1동, 호계2동, 호계3동</strong> 일대는 고소득 전문직, 대기업 및 중견기업 직장인, 대규모 학원가 종사자가 다수를 이룹니다. 이들 지역 채무자는 소득이 상대적으로 높기 때문에 법원에서 가용소득을 높게 잡으려는 보정권고가 강하게 내려옵니다. 따라서 본인 및 부양가족의 고정 지출, 만성 질환으로 인한 정기 의료비, 거주지 전월세 임차보증금 대출 이자 등을 소명하여 법정 최저생계비 외에 추가 생계비를 최대한 인정받는 정밀 컨설팅이 변제금을 낮추는 결정적 열쇠가 됩니다.</p>
+                <p>나아가 안양의 대표적 교통 및 산업 거점인 <strong>명학역, 관악역, 평촌스마트스퀘어, 비산사거리, 호계사거리, 동편마을</strong> 주변의 첨단 벤처기업 종사자들은 성과급이나 스톡옵션 등 변동성 소득이 존재하는 경우가 흔합니다. 이러한 변동 소득을 평균 임금으로 산출하는 과정에서 법원 회생위원과의 치열한 법리 공방이 발생하므로, 다년간 수원회생법원 사건을 집중적으로 처리해 온 전문 변호사의 조력을 받는 것이 필수적입니다.</p>
+            </section>
+
+            <section id="section-eligibility">
+                <h2>3. 2026-2027 최신 기준중위소득 및 법정 최저생계비 산정 공식</h2>
+                <p>개인회생 신청을 고민할 때 가장 먼저 확인해야 하는 질문은 바로 "내가 과연 신청 자격이 되는가?"와 "매달 갚아야 하는 월 변제금은 도대체 얼마인가?"입니다. 개인회생 제도는 채무자의 전체 소득에서 법률이 보장하는 <strong>최저생계비(기준중위소득의 60퍼센트)</strong>를 제외한 나머지 전액(가용소득)을 최장 36개월(원칙)에서 60개월 동안 성실히 변제하고, 남은 원금과 이자를 전액 면책받는 구조입니다.</p>
+
+                <div class="chart-container">
+                    <div class="chart-title">가구원수별 최저생계비 인정 기준 비교 (2026-2027 추정 기준)</div>
+                    <div class="bar-group">
+                        <div class="bar-label">
+                            <span>1인 가구 최저생계비</span>
+                            <span>약 1,438,000원</span>
+                        </div>
+                        <div class="bar-bg">
+                            <div class="bar-fill" style="width: 38%;"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-label">
+                            <span>2인 가구 최저생계비</span>
+                            <span>약 2,392,000원</span>
+                        </div>
+                        <div class="bar-bg">
+                            <div class="bar-fill" style="width: 63%;"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-label">
+                            <span>3인 가구 최저생계비</span>
+                            <span>약 3,074,000원</span>
+                        </div>
+                        <div class="bar-bg">
+                            <div class="bar-fill accent" style="width: 81%;"></div>
+                        </div>
+                    </div>
+                    <div class="bar-group">
+                        <div class="bar-label">
+                            <span>4인 가구 최저생계비</span>
+                            <span>약 3,745,000원</span>
+                        </div>
+                        <div class="bar-bg">
+                            <div class="bar-fill warm" style="width: 98%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="custom-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>가구원 수</th>
+                                <th>2026년 기준중위소득 (100%)</th>
+                                <th>개인회생 인정 생계비 (60%)</th>
+                                <th>월 급여 250만원 기준 예상 변제금</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1인 가구</td>
+                                <td>2,397,000원</td>
+                                <td>약 1,438,000원</td>
+                                <td>약 1,062,000원</td>
+                            </tr>
+                            <tr>
+                                <td>2인 가구</td>
+                                <td>3,986,000원</td>
+                                <td>약 2,392,000원</td>
+                                <td>약 108,000원</td>
+                            </tr>
+                            <tr>
+                                <td>3인 가구</td>
+                                <td>5,123,000원</td>
+                                <td>약 3,074,000원</td>
+                                <td>0원 (변제 불가 시 파산 검토)</td>
+                            </tr>
+                            <tr>
+                                <td>4인 가구</td>
+                                <td>6,242,000원</td>
+                                <td>약 3,745,000원</td>
+                                <td>0원 (생계비 미달, 추가 소득 필요)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>월 변제금 산정의 3대 핵심 원칙과 청산가치 보장의 원칙</h3>
+                <p>개인회생 절차에서 변제금을 결정할 때 법원이 가장 엄격하게 따지는 법리가 바로 <strong>청산가치 보장의 원칙</strong>입니다. 청산가치란 채무자가 지금 당장 전 재산을 현금화했을 때의 순자산 가치를 의미합니다. 채무자가 회생 계획 기간(예: 36개월) 동안 갚아나가는 총 변제액의 현재가치가 채무자가 보유한 재산의 청산가치보다 반드시 많아야만 법원에서 인가결정을 내릴 수 있습니다.</p>
+                <p>만약 안양 평촌에 거주하는 채무자가 임차보증금 중 압류금지 금액을 제외한 잔여 보증금, 본인 명의 차량 가액, 보험 해약환급금 등을 합산하여 3천만 원의 청산가치를 보유하고 있다면, 36개월 동안 갚는 총 변제액의 합계가 최소 3천만 원 이상이 되도록 월 변제금을 강제로 상향 조정해야 합니다. 따라서 실력 있는 법률대리인은 채무자의 재산 평가액을 법령이 허용하는 범위 내에서 최대한 방어하고, 주택임대차보호법상 소액임차인 최우선변제금(안양시는 과밀억제권역에 해당) 등의 공제 조항을 빈틈없이 적용하여 청산가치를 낮추는 고도의 기술을 발휘해야 합니다.</p>
+            </section>
+
+            <section id="section-cost-table">
+                <h2>4. 수임료 요금표 및 법원 공과금 비용 구조 투명 분석</h2>
+                <p>소비자들이 인터넷 포털이나 커뮤니티에서 안양개인회생을 검색할 때 가장 많이 찾아보는 정보는 바로 <strong>비용, 가격, 견적</strong>입니다. 빚으로 고통받는 상황에서 수백만 원에 달하는 수임료를 일시에 마련하는 것은 불가능에 가깝기 때문입니다. 개인회생 진행 시 발생하는 비용은 크게 법원에 납부하는 필수 공과금과 법률사무소에 지급하는 대리인 보수로 나뉩니다.</p>
+
+                <div class="custom-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>구분 항목</th>
+                                <th>평균 금액 및 산정 공식</th>
+                                <th>납부처 및 시기</th>
+                                <th>비고 및 절감 팁</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>정부 인지대</td>
+                                <td>전자소송 기준 27,000원</td>
+                                <td>법원 (신청 시)</td>
+                                <td>전자소송 시 10% 자동 할인 적용</td>
+                            </tr>
+                            <tr>
+                                <td>송달료</td>
+                                <td>기본 10회분 + (채권자수 × 8회분)</td>
+                                <td>법원 (신청 시)</td>
+                                <td>1회당 5,200원 기준, 채권자 수에 비례</td>
+                            </tr>
+                            <tr>
+                                <td>회생위원 보수</td>
+                                <td>150,000원</td>
+                                <td>법원 (개시 전)</td>
+                                <td>외부 회생위원 선임 사건에 한함</td>
+                            </tr>
+                            <tr>
+                                <td>부채증명서 발급 대행</td>
+                                <td>건당 10,000원 ~ 20,000원</td>
+                                <td>발행 금융기관</td>
+                                <td>직접 발급 시 비용 절감 가능</td>
+                            </tr>
+                            <tr>
+                                <td>대리인 수임료</td>
+                                <td>1,200,000원 ~ 2,500,000원</td>
+                                <td>변호사/법무사</td>
+                                <td>채권자 수, 사건 난이도에 따라 차등</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>저렴한곳과 최저가 덤핑 업체의 치명적인 함정</h3>
+                <p>네이버나 구글 등에서 '최저가 수임료 50만 원', '전국 제일 싼곳' 등의 자극적인 광고 문구를 내세우는 일부 불법 브로커나 무자격 사무실을 극도로 주의해야 합니다. 이러한 업체들은 계약 체결 전에는 매우 저렴한 가격표와 요금제를 제시하며 계약금을 유도하지만, 신청서 접수 이후 송달료 추가 청구, 부채발급비 과다 청구, 보정권고 1회당 수십만 원의 추가 비용을 요구하여 결국 정규 법무법인보다 훨씬 비싼 총비용을 청구하는 악질적인 형태를 보입니다.</p>
+                <p>더욱 심각한 문제는 전문적인 법리 검토 없이 형식적인 신청서만 제출하여 법원의 엄격한 보정권고에 제대로 대응하지 못하고 기각 결정을 초래한다는 점입니다. 한번 기각되면 추후 재신청 시 법원의 심리가 극도로 까다로워지므로 처음부터 수원회생법원 실무 경험이 풍부한 공인 전문 사무소에 합리적인 견적을 의뢰하고, 계약서에 추가 비용 발생 여부와 기각 시 100퍼센트 환불 약정을 명문화하는 것이 안전합니다. 현재 대다수의 신뢰할 수 있는 전문 사무소는 초기 계약금 10~20만 원 납부 후 나머지 잔액을 <strong>3개월에서 12개월 무이자 분납</strong>할 수 있는 분납제를 운영하여 채무자의 부담을 덜어드리고 있습니다.</p>
+            </section>
+
+            <section id="section-comparison">
+                <h2>5. 개인회생 vs 개인파산 vs 신용회복위원회 워크아웃 3대 제도 정밀 비교</h2>
+                <p>채무 조정을 결심했을 때 본인의 상황에 가장 적합한 제도가 무엇인지 정확히 이해하지 못하면 엄청난 시간과 비용을 낭비하게 됩니다. 각 제도는 신청 자격, 탕감 범위, 금융 거래 제한 등에서 뚜렷한 장단점과 차이점을 지니고 있습니다.</p>
+
+                <div class="custom-table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>비교 항목</th>
+                                <th>법원 개인회생</th>
+                                <th>법원 개인파산 및 면책</th>
+                                <th>신용회복위원회 워크아웃</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>신청 대상</td>
+                                <td>일정 소득이 있는 직장인/사업자</td>
+                                <td>고령, 중증질환 등 근로능력 상실자</td>
+                                <td>연체 발생자 (신용회복 협약기관)</td>
+                            </tr>
+                            <tr>
+                                <td>채무 한도</td>
+                                <td>무담보 10억, 담보 15억 이하</td>
+                                <td>한도 제한 없음</td>
+                                <td>총 채무 15억 이하</td>
+                            </tr>
+                            <tr>
+                                <td>대상 채무 종류</td>
+                                <td>모든 채무 (사채, 개인돈, 도박 포함)</td>
+                                <td>모든 채무 (비면책채권 제외)</td>
+                                <td>협약 금융회사 채무만 가능</td>
+                            </tr>
+                            <tr>
+                                <td>원금 감면율</td>
+                                <td>최대 90% (평균 60~80%)</td>
+                                <td>원금 100% 전액 탕감</td>
+                                <td>상각채권에 한해 20~70% 제한 감면</td>
+                            </tr>
+                            <tr>
+                                <td>재산 보유 여부</td>
+                                <td>재산 보유 가능 (청산가치 반영)</td>
+                                <td>원칙적 파산재단 환가 및 배당</td>
+                                <td>재산 보유 가능</td>
+                            </tr>
+                            <tr>
+                                <td>신용 회복 시점</td>
+                                <td>면책결정 확정 시 특수기록 삭제</td>
+                                <td>면책 확정 후 일정 기간 기록 유지</td>
+                                <td>성실 상환 2년 경과 시 조기 삭제</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>어떤 제도를 선택하는 것이 가장 유리한가?</h3>
+                <p>첫째, <strong>정기적이고 확실한 소득이 있는 경우</strong>라면 개인회생이 절대적으로 유리합니다. 재산을 온전히 유지하면서 주식, 비트코인 투자 실패로 인한 채무는 물론이고 개인 간에 차용한 사채나 일수, 통신 연체 요금까지 법적 강제력으로 묶어 탕감받을 수 있기 때문입니다.</p>
+                <p>둘째, <strong>질병, 장애, 고령 등으로 인해 객관적으로 근로능력이 전혀 없는 상태</strong>라면 최저생계비 이상의 소득 창출이 불가능하므로 개인파산을 선택해야 합니다. 파산은 변제금 납부 없이 일시에 모든 채무를 면책받는 제도이지만, 재산이 모두 환가 처분되고 공무원이나 전문직 자격이 박탈되는 등 엄격한 법적 제약이 따릅니다.</p>
+                <p>셋째, <strong>채무가 1~2개 1금융권 은행에만 집중되어 있고 연체 기간이 짧은 단순 생계형 채무</strong>라면 신용회복위원회의 프리워크아웃이나 개인워크아웃을 활용하는 것도 고려할 수 있습니다. 그러나 신복위 워크아웃은 채권 금융기관의 동의가 필수적이며 사채나 비협약 채권은 전혀 조정되지 않고, 원금 감면 폭이 개인회생에 비해 현저히 낮다는 결정적인 한계가 존재합니다.</p>
+            </section>
+
+            <section id="section-timeline">
+                <h2>6. 신청 접수부터 최종 면책까지 6단계 완벽 로드맵</h2>
+                <p>안양개인회생을 준비하는 분들이 가장 두려워하는 것은 바로 빚 독촉과 급여 압류입니다. 수원회생법원에 신청서가 접수되는 순간부터 최종적으로 빚이 소멸되는 면책까지의 전 과정을 타임라인별로 상세히 안내해 드립니다.</p>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>1단계: 서류 준비 및 금지명령 접수</h4>
+                        <p>소득 증빙 서류, 재산 목록, 채권자 목록, 진술서를 작성하여 법원에 접수합니다. 접수 후 통상 3일에서 7일 이내에 법원의 <strong>금지명령 및 중지명령</strong>이 발령되어 채권자의 전화, 방문, 통장 압류 등 일체의 독촉 행위가 법적으로 전면 중단됩니다.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>2단계: 보정권고 대응 및 소명</h4>
+                        <p>법원 회생위원은 채무자의 통장 거래 내역, 최근 대출금의 사용처, 재산 평가액을 정밀 심사하며 <strong>보정권고</strong>를 내립니다. 통상 1~3회 진행되며, 법률대리인이 얼마나 설득력 있게 소명서를 작성하느냐에 따라 월 변제금이 최종 결정됩니다.</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>3단계: 개시결정 및 집회 출석</h4>
+                        <p>보정이 완결되면 법원은 <strong>개시결정</strong>을 내리고 채권자집회 기일을 지정합니다. 채무자는 지정된 기일에 수원회생법원에 1회 출석하여 신분 확인과 짤막한 판사 심문을 거치게 됩니다. 채권자가 출석하여 이의를 제기하는 경우는 극히 드뭅니다.</p>
+                    </div>
+                </div>
+
+                <h3>인가결정과 성실 변제 후 최종 면책의 효력</h3>
+                <p>채권자집회가 마무리되면 법원은 공식적으로 <strong>인가결정</strong>을 공고합니다. 인가결정이 내려지면 기존에 설정되어 있던 급여 가압류나 부동산 가압류, 통장 압류 등을 채무자가 직접 법원에 신청하여 완전히 해제할 수 있습니다. 비로소 채무자는 자신의 명의로 자유롭게 통장을 개설하고 체크카드를 사용하며 정상적인 경제활동을 영위하게 됩니다.</p>
+                <p>인가된 변제계획안에 따라 36개월간 매월 정해진 변제금을 법원 계좌로 성실하게 납부하면, 마지막 변제금 납부 후 <strong>면책 신청서</strong>를 제출하게 됩니다. 법원의 면책결정이 확정되면 한국신용정보원에 등록되어 있던 특수기록코드(1101)가 즉시 삭제되며, 잔여 원금과 이자는 법적으로 완전히 소멸하여 완벽한 신용 회복 단계로 진입하게 됩니다.</p>
+            </section>
+
+            <section id="section-calculator">
+                <h2>7. 안양개인회생 간편 모의 계산기 및 실시간 상담 신청</h2>
+                <p>현재 나의 월 소득과 채무액, 그리고 부양가족 수를 바탕으로 매달 납부해야 할 예상 변제금과 탕감율을 즉시 추정해 볼 수 있습니다. 아래 양식을 작성하시면 전문 상담팀이 수원회생법원 맞춤형 1:1 정밀 진단 결과를 안내해 드립니다.</p>
+
+                <div class="calc-widget">
+                    <h3>실시간 자가진단 및 모의 변제금 계산 인터페이스</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted);">본 모의 계산은 2026-2027 최저생계비 기준을 준용하며 입력된 정보는 상담 목적 외에 절대 사용되지 않습니다.</p>
+                    
+                    <form action="#" method="post" onsubmit="event.preventDefault(); alert('안양개인회생 맞춤 분석 요청이 정상적으로 접수되었습니다. 담당 전문가가 빠른 시간 내에 안내 전화를 드립니다.');">
+                        <div class="form-grid">
+                            <div class="form-field">
+                                <label for="user_region">거주 또는 직장 소재지</label>
+                                <select id="user_region" name="user_region" required>
+                                    <option value="">지역을 선택하세요</option>
+                                    <option value="만안구_안양동">만안구 안양동 (1~9동)</option>
+                                    <option value="만안구_석수동">만안구 석수동 (1~3동)</option>
+                                    <option value="만안구_박달동">만안구 박달동 (1~2동)</option>
+                                    <option value="동안구_비산동">동안구 비산동</option>
+                                    <option value="동안구_관양동">동안구 관양동/동편마을</option>
+                                    <option value="동안구_평촌동">동안구 평촌동/학원가</option>
+                                    <option value="동안구_호계동">동안구 호계동/범계역</option>
+                                    <option value="기타_인근지역">의왕/군포/과천 등 인접 관할</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label for="income_type">소득 형태 구분</label>
+                                <select id="income_type" name="income_type" required>
+                                    <option value="">소득 형태를 선택하세요</option>
+                                    <option value="4대보험직장인">4대보험 가입 직장인</option>
+                                    <option value="미가입직장인">4대보험 미가입 / 아르바이트</option>
+                                    <option value="개인사업자">개인사업자 / 소상공인</option>
+                                    <option value="프리랜서">프리랜서 / 특수고용직</option>
+                                    <option value="일용직">일용직 / 건설근로자</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label for="monthly_income">세후 월평균 소득 (원)</label>
+                                <input type="number" id="monthly_income" name="monthly_income" placeholder="예: 2500000" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="dependents">부양가족 수 (본인 제외)</label>
+                                <select id="dependents" name="dependents" required>
+                                    <option value="0">0명 (단독 1인가구)</option>
+                                    <option value="1">1명 (2인가구 인정)</option>
+                                    <option value="2">2명 (3인가구 인정)</option>
+                                    <option value="3">3명 이상 (4인가구 이상)</option>
+                                </select>
+                            </div>
+                            <div class="form-field">
+                                <label for="total_debt">총 채무 원금 합계 (원)</label>
+                                <input type="number" id="total_debt" name="total_debt" placeholder="예: 80000000" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="phone_number">상담 안내받을 연락처</label>
+                                <input type="tel" id="phone_number" name="phone_number" placeholder="010-0000-0000" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-primary">수원회생법원 전담 맞춤 견적 및 자격 무료 확인하기</button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="section-community">
+                <h2>8. 온라인 커뮤니티 실전 후기와 주의해야 할 불법 브로커 수법</h2>
+                <p>최근 인터넷 커뮤니티인 <strong>디시인사이드 회생갤러리, 에펨코리아(펨코), 보배드림</strong> 등에는 개인회생을 직접 경험한 채무자들의 솔직한 '내돈내산 후기'와 성공 및 실패담이 다수 공유되고 있습니다. 이러한 실전 후기들은 법률 지식이 부족한 일반인에게 유용한 정보가 되기도 하지만, 검증되지 않은 왜곡된 정보와 은밀하게 침투한 불법 브로커의 광고 좌표로 악용되는 경우가 많아 각별한 주의가 필요합니다.</p>
+                <p>일부 브로커들은 '성지'나 '비공개 좌표'라는 표현을 쓰며 특정 사이트나 오픈채팅방으로 유인한 뒤, 신청자에게 백화점 상품권 증정, 현금지원 사은품 지급, 가입 프로모션 이벤트 등의 불법 미끼를 던지며 사건을 유치합니다. 변호사법상 법률 사건 수임에 있어 리베이트나 사은품을 제공하는 행위는 엄격히 금지된 불법 행위이며, 이러한 업체에 사건을 맡길 경우 사무장이 서류를 위조하거나 채권자 목록을 누락하여 법원으로부터 사기회생죄로 고발당하거나 기각 처분을 받는 돌이킬 수 없는 피해를 입게 됩니다.</p>
+                <p>최근에는 <strong>챗지피티(ChatGPT)</strong>나 <strong>구글 제미나이(Gemini)</strong> 등 생성형 AI를 활용하여 법률 상담을 미리 받아보는 이용자가 급증하고 있습니다. AI는 기본적인 법률 요건을 빠르게 알려주는 장점이 있지만, 수원회생법원의 구체적인 판사별 성향이나 최신 보정권고 트렌드까지 정확히 반영하지는 못합니다. 따라서 AI 정보를 참고용으로 활용하되, 최종적인 사건 수임과 진행은 네이버 플레이스 및 대한변호사협회에 정식 등록된 안양 현지 전문 변호사와의 직접 상담을 통해 결정하는 것이 가장 안전한 방법입니다.</p>
+            </section>
+
+            <section id="section-faq">
+                <h2>9. 안양개인회생 자주 묻는 질문 (FAQ 10문 10답)</h2>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">Q1. 개인회생을 신청하면 직장이나 가족들이 알게 되나요?</button>
+                        <div class="accordion-body">
+                            <p>전혀 알 수 없습니다. 법원의 모든 우편물과 통지서는 대리인 사무실로 송달되며, 직장으로 일체의 연락이 가지 않습니다. 채권자들의 무단 방문이나 가족에 대한 대위변제 요구 행위는 법령으로 엄격히 처벌되므로 완벽한 비밀 보장이 가능합니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Q2. 최근 발생한 대출이나 카드 사용액이 많은데도 신청이 가능한가요?</button>
+                        <div class="accordion-body">
+                            <p>가능합니다. 다만 대출 발생 후 1년 이내의 채무(최근 채무) 비중이 높을 경우 법원은 채무 발생 경위와 자금 사용처를 철저히 조사합니다. 생활비나 기존 채무 돌려막기에 사용된 내역을 소명서와 함께 정밀하게 입증하면 기각 없이 정상적으로 인가받을 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Q3. 배우자 명의의 재산이나 집이 있어도 제가 회생을 신청할 수 있나요?</button>
+                        <div class="accordion-body">
+                            <p>신청 가능합니다. 수원회생법원은 원칙적으로 부부별산제를 존중하므로 배우자가 취득한 고유 재산은 채무자의 재산으로 보지 않습니다. 다만 배우자 재산 형성 과정에 채무자의 자금이 유입되었는지 여부를 확인하기 위해 소명 절차가 진행될 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Q4. 자영업자나 프리랜서도 소득 증빙이 가능한가요?</button>
+                        <div class="accordion-body">
+                            <p>네, 충분히 가능합니다. 세무서에 신고된 종합소득세 자료가 없거나 미미하더라도, 최근 수개월간의 통장 거래 내역, 세금계산서 발행 내역, 거래처 입금 확인서, 매출 장부 등을 종합하여 객관적인 월평균 순소득을 산출하여 신청합니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Q5. 금지명령이 기각되는 경우도 있나요? 기각되면 어떻게 되나요?</button>
+                        <div class="accordion-body">
+                            <p>과거 회생 폐지 이력이 있거나 최근 채무 비중이 지나치게 높은 경우 금지명령이 간혹 기각될 수 있습니다. 그러나 금지명령 기각이 회생 기각을 의미하는 것은 아닙니다. 신속하게 보정 서류를 제출하여 개시결정을 앞당기면 개시결정 즉시 모든 압류와 추심이 강제 중단됩니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Q6. 개인회생 중에도 일반 통장 거래나 체크카드 사용이 가능한가요?</button>
+                        <div class="accordion-body">
+                            <p>네, 가능합니다. 채권자로 포함되지 않은 일반 시중은행이나 2금융권, 카카오뱅크, 토스뱅크 등에서 계좌를 자유롭게 개설하여 입출금 및 체크카드 결제를 정상적으로 이용할 수 있습니다. 단, 신용카드 발급은 면책 시까지 제한됩니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Q7. 주식, 가상화폐(코인), 불법 도박 빚도 탕감받을 수 있나요?</button>
+                        <div class="accordion-body">
+                            <p>탕감 가능합니다. 수원회생법원은 실무준칙에 따라 투자 손실금의 청산가치 미산입 원칙을 적용하므로 주식 및 코인 채무자에게 매우 유리합니다. 도박 채무의 경우 반성문과 성실 상환 의지를 적극 소명하여 변제율을 합리적으로 조정받을 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Q8. 변제 기간은 무조건 3년(36개월)인가요?</button>
+                        <div class="accordion-body">
+                            <p>원칙적으로 36개월입니다. 다만 만 30세 미만의 청년층이나 3인 이상의 다자녀 가구, 중증 장애인 등 취약계층의 경우 수원회생법원 실무준칙에 따라 변제 기간을 24개월(2년)까지 단축하여 신속한 사회 복귀를 지원하고 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Q9. 회생 진행 중 이직하거나 급여가 오르면 변제금도 늘어나나요?</button>
+                        <div class="accordion-body">
+                            <p>원칙적으로 늘어나지 않습니다. 수원회생법원은 특별한 사정(조건부 인가 사건)이 없는 한 고정 변제액 기준을 채택하므로, 인가결정 이후 소득이 증가하거나 승진을 하더라도 처음에 정해진 월 변제금만 성실히 납부하면 됩니다.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">Q10. 만약 변제금을 납부하다가 실직하여 미납되면 어떻게 되나요?</button>
+                        <div class="accordion-body">
+                            <p>통상 3회 이상 변제금이 연체되면 회생 폐지 위기에 놓이게 됩니다. 그러나 실직, 질병 등 정당한 사유가 발생한 경우 법원에 변제계획안 변경 신청을 하거나 특별면책을 청구하여 변제 기간을 유예하거나 남은 채무를 면책받는 구제 절차가 마련되어 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-resources">
+                <h2>10. 공인된 신뢰 기관 및 공식 법률 포털 안내</h2>
+                <p>안양개인회생 신청을 준비할 때에는 반드시 국가 공인 기관이나 공식 법률 사이트의 객관적인 정보를 바탕으로 판단해야 합니다. 공신력 있는 공식 외부 사이트를 연결하여 정확한 정보를 확인하실 수 있도록 지원합니다.</p>
+
+                <div class="trust-links-panel">
+                    <h4>공식 인증 법률 및 사법 기관 리포트</h4>
+                    <div class="link-pill-list">
+                        <a href="https://directxcheckx.koreahankang.com" target="_blank" rel="noopener noreferrer" class="link-pill-item">
+                            <span><strong>안양회생 전담 법률 리포트 및 관할 데이터 포털</strong> (reliabledone 공인 분석 자료)</span>
+                            <span>포털 이동</span>
+                        </a>
+                        <a href="https://swh.scourt.go.kr" target="_blank" rel="noopener noreferrer" class="link-pill-item">
+                            <span><strong>대한민국 법원 수원회생법원 공식 포털</strong> (안양시 전담 관할 법원 공고 및 실무준칙)</span>
+                            <span>법원 이동</span>
+                        </a>
+                        <a href="https://namu.wiki/w/%EA%B0%9C%EC%9D%B8%ED%9A%8C%EC%83%9D" target="_blank" rel="noopener noreferrer" class="link-pill-item">
+                            <span><strong>나무위키 개인회생 종합 실무 해설</strong> (제도 역사, 자격 요건, 법률 용어 사전)</span>
+                            <span>백과사전 이동</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+
+  
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const headers = document.querySelectorAll('.accordion-header');
+        headers.forEach(header => {
+          header.addEventListener('click', () => {
+            const body = header.nextElementSibling;
+            const isOpen = body.classList.contains('open');
+
+            document.querySelectorAll('.accordion-body').forEach(b => {
+              b.classList.remove('open');
+            });
+            document.querySelectorAll('.accordion-header').forEach(h => {
+              h.classList.remove('active');
+            });
+
+            if (!isOpen) {
+              body.classList.add('open');
+              header.classList.add('active');
+            }
+          });
+        });
+      });
+    </script>
+  
